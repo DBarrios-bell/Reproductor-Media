@@ -14,8 +14,8 @@ class Specialty extends Model
         'descripcion'
     ];
 
-    public function videospecialty()
+    public function videos()
     {
-        return $this->hasMany(VideoEspeciality::class);
+        return $this->belongsToMany(Video::class);
     }
 }

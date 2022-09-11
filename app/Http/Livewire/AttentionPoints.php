@@ -11,7 +11,8 @@ class AttentionPoints extends Component
 
     public function render()
     {
-        return view('livewire.attention-points')->extends('layouts.app')->section('content');
+        return view('livewire.attention-points')
+        ->extends('layouts.app')->section('content');
     }
 
     public function Store()

@@ -10,22 +10,20 @@
     {{-- <link rel="stylesheet" href="style.css"> --}}
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css" />
     
-    <title>Html And CSS Video Playlist</title>
+    <title>Video Playlist</title>
     <!-- S-Tech04 | www.youtube.com/STech04 -->
 </head>
 
 <body>
-    <div class="nav">
-            @include('layouts.themes.navbar')
-    </div>
-    <section>
-            @yield('content')
 
-        @include('layouts.themes.tab')
+    @yield('content')
 
-    </section>
+    @include('layouts.themes.tab')
+
+
     @include('layouts.themes.scripts')
-    {{-- @include('layouts.common.scripts') --}}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>

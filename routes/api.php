@@ -74,15 +74,14 @@ Route::post('/getPAtencion',function(Request $req){
     return $puntoAtention;
 });
 
-    // Route::post('/getNavbar',function(Request $req){
-    //     $ids = Auth::user()->id;
-    //     $user_sessions = User::join('specialties as s','s.id','users.specialty_id')
-    //                     ->select('nombre')->where('users.id','1')->get();
-    //     $data = [];
-    //     foreach($user_sessions as $us){
-    //         array_push($data,[
-    //         "name" => $us->nombre,
-    //         ]);
-    //     }
-    //     return $data;
-    // });
+Route::post('/getVideo', function(Request $req){
+    $media = Video::select('id','titulo')->get();
+    $videos = [];
+    foreach($media as $m){
+        array_push($videos,[
+            "id" => $m->id,
+            "video" => $m->titulo
+        ]);
+    }
+    return $videos;
+});

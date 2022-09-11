@@ -11,14 +11,14 @@ class VideoSpecialty extends Model
 
     protected $fillable = [
         'video_id',
-        'speciality_id'
+        'specialty_id'
     ];
-
+    
+    public function specialities(){
+    return $this->belongsTo(Specialty::class);
+    }
     public function videos(){
     return $this->belongsTo(Video::class);
     }
 
-    public function specialities(){
-    return $this->belongsTo(Specialty::class);
-    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Video;
 use App\Http\Requests;
+use App\Models\VideoSpecialty;
 use Illuminate\Support\Facades\Request;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -49,7 +50,7 @@ class Videos extends Component
     {
         $rules=[
             'titulo' => 'required|min:8|unique:videos',
-            'media' => 'required|mimetypes:video/mp4' //max:204800 es en kilobytes
+            'media' => 'required|mimetypes:video/mp4'
         ];
 
         $this->validate($rules);
@@ -73,7 +74,7 @@ class Videos extends Component
     {
         $rules=[
             'titulo' => "required|min:8|unique:videos,titulo,{$this->selected_id}",
-            'media' => 'required|mimetypes:video/mp4|max:200'
+            'media' => 'required|mimetypes:video/mp4'
         ];
 
         $this->validate($rules);
@@ -102,20 +103,29 @@ class Videos extends Component
     }
 
     public function resetUI(){
-    $this->titulo = '';
-    $this->descripcion = '';
-    // $this->search ='';
-    $this->media= null;
-    $this->selected_id=0;
+        $this->titulo = '';
+        $this->descripcion = '';
+        // $this->search ='';
+        $this->media= null;
+        $this->selected_id=0;
     }
 
-    protected $listeners =[
-    'deleteRow' => 'Destroy'
-    ];
+     protected $listeners =[
+     'deleteRow' => 'Destroy'
+     ];
 
     public function Destroy(Video $video)
     {
-         $spe = Videos::where('selected_id' , $video->id)->count();
-        return ($spe);
+        if($video){
+            $videoSpecialty = VideoSpecialty::where('video_id', $video->id)->count();
+            if($videoSpecialty > 0){
+                $this->emit('media-specialty','El Video Esta Relacionado con una o mas Especialidades');
+            }else{
+                dd($video);
+                        // $video = Video::find($id);
+                        // $video->delete();
+            }
+        }
+
     }
 }

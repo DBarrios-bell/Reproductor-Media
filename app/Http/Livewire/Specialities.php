@@ -11,7 +11,7 @@ class Specialities extends Component
 
     use WithPagination;
     public $nombre, $search, $selected_id, $pageTitle, $componentName, $session;
-    private $pagination = 2;
+    private $pagination = 10;
     protected $paginationTheme = 'bootstrap';
 
     public function mount()

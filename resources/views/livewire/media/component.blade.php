@@ -51,10 +51,10 @@
                                     class="btn btn-dark mtmobile" title="Edit">
                                     Edit
                                 </a>
-                                {{-- <a href="javascript:void(0)" onclick="Confirm('{{ $v->id }}')"
+                                <a href="javascript:void(0)" onclick="Confirm('{{ $v->id }}')"
                                     class="btn btn-dark mtmobile" title="Delete">
                                     Delete
-                                </a> --}}
+                                </a>
                             </td>
                         </tr>
                     @empty
@@ -102,7 +102,7 @@
     });
 
     function Confirm(id) {
-        swal({
+        Swal.fire({
             title: 'CONFIRMAR',
             text: 'CONFIRMAS ELIMINAR EL REGISTRO?',
             type: 'warning',

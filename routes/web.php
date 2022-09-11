@@ -1,11 +1,15 @@
 <?php
 
 use App\Http\Livewire\AttentionPoints;
+use App\Http\Livewire\Navbar;
 use App\Http\Livewire\Nurses;
+use App\Http\Livewire\PlayVideos;
 use App\Http\Livewire\Specialities;
 use App\Http\Livewire\Videos;
 use App\Http\Livewire\Users;
+use App\Http\Livewire\VideoSpecialities;
 use App\Models\User;
+use App\Models\VideoSpecialty;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,7 +24,6 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('navbar', NavBarController::class)->name('navbar');
 Auth::routes();
 
 Route::middleware(['auth'])->group(function(){
@@ -28,8 +31,9 @@ Route::middleware(['auth'])->group(function(){
 Route::get('/', Videos::class)->name('media');
 Route::get('users', Users::class)->name('users');
 Route::get('especialidad', Specialities::class)->name('especialidad');
-Route::get('enfermeria', Nurses::class)->name('enfermeria');
+Route::get('reproductor', PlayVideos::class)->name('reproductor');
 Route::get('patencion', AttentionPoints::class)->name('patencion');
+Route::get('relacionar', VideoSpecialities::class)->name('relacionar');
 });
 
 Route::prefix('api-v2')->group(function () {
